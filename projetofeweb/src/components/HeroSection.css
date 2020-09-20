@@ -32,11 +32,11 @@ video {
       'Lucida Sans', Arial, sans-serif;
   }
   
-  .hero-btns {
+  .hero-buttons {
     margin-top: 32px;
   }
   
-  .hero-btns .btn {
+  .hero-buttons .btns {
     margin: 6px;
   }
   
@@ -61,12 +61,12 @@ video {
       font-size: 30px;
     }
   
-    .btn-mobile {
+    .btns-mobile {
       display: block;
       text-decoration: none;
     }
   
-    .btn {
+    .btns {
       width: 100%;
     }
   }

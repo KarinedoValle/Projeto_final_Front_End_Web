@@ -8,6 +8,7 @@ import Cadastrar from './components/pages/cadastrar'
 import Deletar from './components/pages/deletar'
 import Buscar from './components/pages/buscar'
 import Login from './components/pages/login'
+import Cliente from './components/pages/cliente'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path = '/atualizar' component = {Atualizar}/>
           <Route path = '/deletar' component = {Deletar}/>
           <Route path = '/login' component = {Login}/>
+          <Route path = '/cliente/:busca' component = {Cliente}/>
        </Switch>
      </Router>
     </>

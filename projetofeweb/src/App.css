@@ -4,7 +4,7 @@
     padding: 0;
     font-family: 'PT Sans', sans-serif;
   }
-  
+
   .home,
   .atualizar,
   .cadastrar,
@@ -17,16 +17,19 @@
     justify-content: center;
     font-size: 3rem;
   }
-  
+  h3{
+    text-align: center;
+  }
+
   .atualizar {
-    background-image: url('/images/img-2.jpg');
+    background-image: url('/images/img-9.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     color: #fff;
     font-size: 100px;
   }
-  
+
   .deletar {
     background-image: url('/images/img-1.jpg');
     background-position: center;
@@ -35,7 +38,7 @@
     color: #fff;
     font-size: 100px;
   }
-  
+
   .login {
     background-image: url('/images/img-8.jpg');
     background-position: center;
@@ -46,7 +49,7 @@
   }
 
   .buscar {
-    background-image: url('/images/img-8.jpg');
+    background-image: url('/images/img-3.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -55,10 +58,52 @@
   }
 
   .cadastrar {
-    background-image: url('/images/img-8.jpg');
+    background-image: url('/images/img-2.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     color: #fff;
     font-size: 100px;
   }
+
+  .busca-clientes{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 20%;
+    text-align: justify;
+    justify-content: left;
+    margin-right: 2rem;
+    margin-left: 15rem;
+    padding: 25px;
+    padding-left: 20px;
+  }
+
+  .caixa-busca{    
+    background-color:#F2F2F2;    
+    border:solid 1px;    
+    border-radius:15px;    
+    width:400px;
+   
+     
+  }    
+  
+  .txtBusca{    
+    float:left;    
+    background-color:#CEE3F6;    
+    padding-left:5px;   
+     font-style:normal;    
+     font-size:18px;    
+     border:none;    
+     height:32px;    
+     width:260px;  
+
+    }
+
+    .dados-clientes{
+      padding-top: 30px;
+      padding-left:5px;
+    }
+
+    th{
+      border: black;
+    }
