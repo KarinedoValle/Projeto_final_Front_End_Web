@@ -67,11 +67,8 @@
   }
 
   .busca-clientes{
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-gap: 20%;
-    text-align: justify;
-    justify-content: left;
+    text-align: left;
+    justify-content: center;
     margin-right: 2rem;
     margin-left: 15rem;
     padding: 25px;
@@ -83,7 +80,6 @@
     border:solid 1px;    
     border-radius:15px;    
     width:400px;
-   
      
   }    
   
@@ -96,7 +92,7 @@
      border:none;    
      height:32px;    
      width:260px;  
-
+    text-align: center;
     }
 
     .dados-clientes{
