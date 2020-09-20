@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBar from './components/NavBar'
+import Footer from './components/Footer'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import './App.css';
 import Home from './components/pages/home'
@@ -24,6 +25,7 @@ function App() {
           <Route path = '/login' component = {Login}/>
           <Route path = '/cliente/:busca' component = {Cliente}/>
        </Switch>
+       <Footer />
      </Router>
     </>
   );
