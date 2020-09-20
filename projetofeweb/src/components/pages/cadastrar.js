@@ -7,7 +7,6 @@ import api from '../../services/api'
 
 export default function Cadastrar() {
     const [cliente, setCliente] = useState({})
-    const [endereco, setEndereco] = useState({})
     const [vnome, setVnome] = useState('')
     const [vusuario, setVusuario] = useState('')
     const [vcpf, setVcpf] = useState('')

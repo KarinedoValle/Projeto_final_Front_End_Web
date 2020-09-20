@@ -49,7 +49,7 @@ function Footer() {
         <div className='social-media-wrap'>
           <div className='footer-logo'>
             <Link to = "/" className = "navbar-logo">
-                 <img src="images/logo.jpg" alt="Logo Hero Company"/>
+                 <img src="images/hero.png" alt="Logo Hero Company"/>
             </Link>
           </div>
           <small className='website-rights'>Hero Company &copy; 2020</small>
