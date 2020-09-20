@@ -10,7 +10,6 @@ Conteúdo do trabalho:
 # Projeto final da disciplina de Front-End Web
 
 * <strong>Problema:</strong> Precisamos de soluções para uma rede de e-commerce. Será necessário desenvolver uma aplicação que seja capaz de gerenciar os produtos, suas categorias, seus funcionários e seus clientes.
-<br>
 
 * <strong>Objetivo:</strong> Construir uma interface para que seja possível consumir os dados presentes na api. Sua aplicação deverá seguir uma série de critérios, de modo que:
 
@@ -32,6 +31,6 @@ Conteúdo do trabalho:
     - Código legível e organizado;
     - Utilizar boas práticas e padrões de projeto.
 
-* Referência:
-<strong>Api residencia-ecommerce:</strong>
+* Referência: 
+    - <strong>Api residencia-ecommerce:</strong><br>
 residencia-ecommerce.us-east-1.elasticbeanstalk.com/
