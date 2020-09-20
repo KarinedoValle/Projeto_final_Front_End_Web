@@ -39,9 +39,12 @@ function Buscar() {
 
   return (
     <div className="App">
-      <h1 className="buscar">Buscar</h1>
-      <div className="busca-clientes">
-        <div className="input-busca">
+    <h1 className="buscar">Buscar</h1>
+    <div className="container col-md-12">
+      <div className="busca-clientes row col-md-12">
+        <div className="col-md-1"></div>
+        <div className="input-busca col-md-5">
+       
           <div className="buscar-por-nome">
             <form>
               <input type="text" placeholder="Buscar por nome" className="caixa-busca txtBusca" onChange={handleChange} />
@@ -56,16 +59,20 @@ function Buscar() {
                   </>
                 )
               })}
-            </div>
+          
+          </div>
           </div>
         </div>
-        <div className="buscar-por-id">
+        
+        <div className="col-md-1"></div>
+        <div className="buscar-por-id col-md-5">
           <form>
             <input type="text" placeholder="Buscar por id" className="caixa-busca txtBusca" onChange={handleChangeId} />
           </form>
           <div className="dados-clientes">
             <Cliente id={clienteId.id} nome={clienteId.nome} usuario={clienteId.usuario} cpf={clienteId.cpf} email={clienteId.email} dataNascimento={clienteId.dataNascimento} rua={clienteId.endereco && clienteId.endereco.rua} numero={clienteId.endereco && clienteId.endereco.numero} complemento={clienteId.endereco && clienteId.endereco.complemento} bairro={clienteId.endereco && clienteId.endereco.bairro} cidade={clienteId.endereco && clienteId.endereco.cidade} estado={clienteId.endereco && clienteId.endereco.estado} cep={clienteId.endereco && clienteId.endereco.cep}></Cliente>
           </div>
+        </div>
         </div>
       </div>
     </div>
