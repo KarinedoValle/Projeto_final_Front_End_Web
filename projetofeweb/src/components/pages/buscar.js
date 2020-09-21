@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../App.css';
+import '../../App.css'
 import Cliente from './cliente'
 import api from '../../services/api'
 

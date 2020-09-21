@@ -1,8 +1,8 @@
 import React from 'react';
-import NavBar from './components/NavBar'
-import Footer from './components/Footer'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import './App.css';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import NavBar from './components/others/NavBar'
+import Footer from './components/others/Footer'
 import Home from './components/pages/home'
 import Atualizar from './components/pages/atualizar'
 import Cadastrar from './components/pages/cadastrar'

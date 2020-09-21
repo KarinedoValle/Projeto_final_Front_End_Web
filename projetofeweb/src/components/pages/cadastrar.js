@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../../bootstrap/css/bootstrap.css'
 import '../../bootstrap/css/bootstrap-grid.css'
 import '../../App.css'
-import { Button2 } from './Button2'
+import { Button2 } from '../others/Button2'
 import api from '../../services/api'
 
 export default function Cadastrar() {
