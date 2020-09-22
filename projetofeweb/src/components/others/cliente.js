@@ -1,7 +1,24 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import '../../css/App.css'
+import api from '../../services/api'
 
-function Cliente({ id, nome, usuario, cpf, email, dataNascimento, rua, numero, complemento, bairro, cidade, estado, cep }) {
+function Cliente(porId) {
+  const [clienteId, setClienteId] = useState({})
+  const [buscaId, setBuscaId] = useState('')
+
+  useEffect(() => {
+      setBuscaId(porId.id)
+      Buscar(porId.id) 
+  }, [porId])
+
+function Buscar(buscaId) {
+    api.get(`/cliente/${buscaId}`).then(response => { 
+        setClienteId(response.data) 
+    }).catch(erro => { 
+    alert("Cliente não encontrado!")                
+    setClienteId('') 
+    })
+}
 
     return (
         <>
@@ -13,29 +30,29 @@ function Cliente({ id, nome, usuario, cpf, email, dataNascimento, rua, numero, c
                             <thead>
                                 <tr>
                                     <td>Id</td>
-                                    <td>{id}</td>
+                                    <td>{clienteId.id}</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>Nome</td>
-                                    <td>{nome}</td>
+                                    <td>{clienteId.nome}</td>
                                 </tr>
                                 <tr>
                                     <td>Usuário</td>
-                                    <td>{usuario}</td>
+                                    <td>{clienteId.usuario}</td>
                                 </tr>
                                 <tr>
                                     <td>CPF</td>
-                                    <td>{cpf}</td>
+                                    <td>{clienteId.cpf}</td>
                                 </tr>
                                 <tr>
                                     <td>E-mail</td>
-                                    <td>{email}</td>
+                                    <td>{clienteId.email}</td>
                                 </tr>
                                 <tr>
                                     <td>Data de nascimento</td>
-                                    <td>{dataNascimento}</td>
+                                    <td>{clienteId.dataNascimento}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -50,31 +67,31 @@ function Cliente({ id, nome, usuario, cpf, email, dataNascimento, rua, numero, c
                             <tbody>
                                 <tr>
                                     <td>Rua</td>
-                                    <td>{rua}</td>
+                                    <td>{clienteId.endereco && clienteId.endereco.rua}</td>
                                 </tr>
                                 <tr>
                                     <td>Número</td>
-                                    <td>{numero}</td>
+                                    <td>{clienteId.endereco && clienteId.endereco.numero}</td>
                                 </tr>
                                 <tr>
                                     <td>Complemento</td>
-                                    <td>{complemento}</td>
+                                    <td>{clienteId.endereco && clienteId.endereco.complemento}</td>
                                 </tr>
                                 <tr>
                                     <td>Bairro</td>
-                                    <td>{bairro}</td>
+                                    <td>{clienteId.endereco && clienteId.endereco.bairro}</td>
                                 </tr>
                                 <tr>
                                     <td>Cidade</td>
-                                    <td>{cidade}</td>
+                                    <td>{clienteId.endereco && clienteId.endereco.cidade}</td>
                                 </tr>
                                 <tr>
                                     <td>Estado</td>
-                                    <td>{estado}</td>
+                                    <td>{clienteId.endereco && clienteId.endereco.estado}</td>
                                 </tr>
                                 <tr>
                                     <td>CEP</td>
-                                    <td>{cep}</td>
+                                    <td>{clienteId.endereco && clienteId.endereco.cep}</td>
                                 </tr>
                             </tbody>
                         </table>

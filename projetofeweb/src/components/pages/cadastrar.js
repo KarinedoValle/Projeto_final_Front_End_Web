@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect} from 'react'
 import '../../css/bootstrap/css/bootstrap.css'
 import '../../css/bootstrap/css/bootstrap-grid.css'
 import '../../css/App.css'
@@ -7,7 +7,7 @@ import {Title} from '../styles/CadastrarStyles'
 import api from '../../services/api'
 
 export default function Cadastrar() {
-    const [cliente, setCliente] = useState()
+    const [cliente, setCliente] = useState('')
     const [name, setName] = useState('')
     const [user, setUser] = useState('')
     const [cpf, setCpf] = useState('')
@@ -77,10 +77,17 @@ export default function Cadastrar() {
                 cep: zoneCode
             }
         })
-        api.post('/cliente', cliente).then(response => {
-            alert("Cliente cadastrado!")
-        }).catch(erro => console.log(erro))
+        
     }
+
+    useEffect(() => {
+        if(cliente !== ''){
+            api.post('/cliente', cliente).then(response => {
+                alert("Cliente cadastrado!")
+            }).catch(erro => console.log(erro))
+
+        }
+    }, [cliente])
     
     return (
 

@@ -8,24 +8,17 @@ import Cliente from '../others/cliente'
 import api from '../../services/api'
 
 function Buscar() {
-  const [clientes, setClientes] = useState([])
-  const [clienteId, setClienteId] = useState({})
+  const [cliente, setCliente] = useState([])
   const [buscaId, setBuscaId] = useState('')
   const [busca, setBusca] = useState('')
 
   useEffect(() => {
     api.get('/cliente').then(response => {
-      setClientes(response.data)
+      setCliente(response.data)
     })
 
   }, [])
 
-  useEffect(() => {
-    api.get(`/cliente/${buscaId}`).then(response => {
-      setClienteId(response.data)
-    })
-
-  }, [buscaId])
 
   const handleChange = e => {
     setBusca(e.target.value)
@@ -35,7 +28,7 @@ function Buscar() {
     setBuscaId(e.target.value)
   }
 
-  const clienteBusca = clientes.filter(cliente =>
+  const clienteBusca = cliente.filter(cliente =>
     cliente.nome.toLowerCase().includes(busca.toLowerCase())
   )
 
@@ -54,9 +47,84 @@ function Buscar() {
               {clienteBusca.map(cliente => {
                 return (
                   <>
-                    <Cliente id={cliente.id} nome={cliente.nome} usuario={cliente.usuario} cpf={cliente.cpf} email={cliente.email} dataNascimento={cliente.dataNascimento} rua={cliente.endereco && cliente.endereco.rua} numero={cliente.endereco && cliente.endereco.numero} complemento={cliente.endereco && cliente.endereco.complemento} bairro={cliente.endereco && cliente.endereco.bairro} cidade={cliente.endereco && cliente.endereco.cidade} estado={cliente.endereco && cliente.endereco.estado} cep={cliente.endereco && cliente.endereco.cep}></Cliente>
-                    <br></br>
-                  </>
+            <div>
+                <div className="dados-clientes">
+                    <div className="cliente-dados-pessoais">
+                        <legend>Dados do cliente</legend>
+                        <table className="tabela table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>Id</td>
+                                    <td>{cliente.id}</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Nome</td>
+                                    <td>{cliente.nome}</td>
+                                </tr>
+                                <tr>
+                                    <td>Usuário</td>
+                                    <td>{cliente.usuario}</td>
+                                </tr>
+                                <tr>
+                                    <td>CPF</td>
+                                    <td>{cliente.cpf}</td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail</td>
+                                    <td>{cliente.email}</td>
+                                </tr>
+                                <tr>
+                                    <td>Data de nascimento</td>
+                                    <td>{cliente.dataNascimento}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="cliente-endereco">
+                        <table className="tabela table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>Endereço:</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Rua</td>
+                                    <td>{cliente.endereco && cliente.endereco.rua}</td>
+                                </tr>
+                                <tr>
+                                    <td>Número</td>
+                                    <td>{cliente.endereco && cliente.endereco.rua}</td>
+                                </tr>
+                                <tr>
+                                    <td>Complemento</td>
+                                    <td>{cliente.endereco && cliente.endereco.rua}</td>
+                                </tr>
+                                <tr>
+                                    <td>Bairro</td>
+                                    <td>{cliente.endereco && cliente.endereco.rua}</td>
+                                </tr>
+                                <tr>
+                                    <td>Cidade</td>
+                                    <td>{cliente.endereco && cliente.endereco.rua}</td>
+                                </tr>
+                                <tr>
+                                    <td>Estado</td>
+                                    <td>{cliente.endereco && cliente.endereco.rua}</td>
+                                </tr>
+                                <tr>
+                                    <td>CEP</td>
+                                    <td>{cliente.endereco && cliente.endereco.rua}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </>
                 )
               })}
           
@@ -70,7 +138,7 @@ function Buscar() {
             <Input type="text" placeholder="Buscar por id" className="caixa-busca txtBusca" onChange={handleChangeId} />
           </form>
           <div className="dados-clientes">
-            <Cliente id={clienteId.id} nome={clienteId.nome} usuario={clienteId.usuario} cpf={clienteId.cpf} email={clienteId.email} dataNascimento={clienteId.dataNascimento} rua={clienteId.endereco && clienteId.endereco.rua} numero={clienteId.endereco && clienteId.endereco.numero} complemento={clienteId.endereco && clienteId.endereco.complemento} bairro={clienteId.endereco && clienteId.endereco.bairro} cidade={clienteId.endereco && clienteId.endereco.cidade} estado={clienteId.endereco && clienteId.endereco.estado} cep={clienteId.endereco && clienteId.endereco.cep}></Cliente>
+            <Cliente id={buscaId}></Cliente>
           </div>
         </div>
         </div>
