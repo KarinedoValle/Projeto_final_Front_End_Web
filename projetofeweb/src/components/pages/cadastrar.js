@@ -7,7 +7,7 @@ import api from '../../services/api'
 
 export default function Cadastrar() {
     const [cliente, setCliente] = useState({})
-    const [name, setName] = useState('')
+    const [name, setName] = useState('Maria Clara')
     const [user, setUser] = useState('')
     const [cpf, setCpf] = useState('')
     const [mail, setMail] = useState('')
@@ -58,10 +58,9 @@ export default function Cadastrar() {
         setZoneCode(e.target.value);
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
+    const handleSubmit = () => {
 
-        var customer = {
+       setCliente({
             nome: name,
             usuario: user,
             cpf: cpf,
@@ -76,18 +75,14 @@ export default function Cadastrar() {
                 estado: state,
                 cep: zoneCode
             }
-        }
-        setCliente(customer)
-        console.log(cliente)
-        console.log(customer)
-        api.post('/cliente', cliente).then(res => console.log(res)).catch(erro => console.log(erro))
+        })
     }
 
-    // useEffect(() => {
-    //     api.post('/cliente', cliente).then(response => {
-    //         console.log(response.data)
-    //     }).catch(erro => console.log(erro))
-    // }, [cliente])
+    useEffect(() => {
+        api.post('/cliente', cliente).then(response => {
+            console.log(response.data)
+        }).catch(erro => console.log(erro))
+    }, [cliente])
 
     return (
 
@@ -110,18 +105,19 @@ export default function Cadastrar() {
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="cpf">CPF</label>
-                                    <input type="text" required={true} placeholder="000.000.000.00" className="cpf form-control" id="cpf" onChange={getCpf} />
+                                    <h6>(Somente números)</h6>
+                                    <input type="text" required={true} className="cpf form-control" id="cpf" onChange={getCpf} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="email">E-mail</label>
                                     <div className="input-group-prepend">
                                         <span className="input-group-text">@</span>
-                                        <input type="email" required={true} placeholder="email@example.com" className="emai form-control" id="email" onChange={getMail} />
+                                        <input type="email" required={true}  placeholder="email@example.com" className="emai form-control" id="email" onChange={getMail} />
                                     </div>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="dataNascimento">Data de nascimento</label>
-                                    <input type="text" required={true} placeholder="AAAA-MM-DD" className="dataNascimento form-control" id="dataNascimento" onChange={getBirthday} />
+                                    <input type="text" required={true} placeholder="AAAA-MM-DDT:00:00:00Z" className="dataNascimento form-control" id="dataNascimento" onChange={getBirthday} />
                                 </div>
                                 <h3>Endereço</h3>
                                 <div className="form-group">
@@ -142,11 +138,11 @@ export default function Cadastrar() {
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="cidade">Cidade</label>
-                                    <input type="text" required={true} className="cidade form-control" id="cidade" onChange={getCity} />
+                                    <input type="text" required={true}  className="cidade form-control" id="cidade" onChange={getCity} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="estado">Estado</label>
-                                    <input type="text" required={true} className="estado form-control" id="estado" onChange={getState} />
+                                    <input type="text" required={true} required={true} className="estado form-control" id="estado" onChange={getState} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="cep">Cep</label>
