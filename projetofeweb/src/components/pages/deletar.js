@@ -22,7 +22,7 @@ export default function Deletar() {
 
     const deleteCliente = () => {
         if(buscaId === ''){
-            alert("Para deletar preencha o campo id abaixo!")
+            alert("Para deletar, preencha o campo id abaixo!")
         } else{
             api.delete(`/cliente/${buscaId}`).then(response => {
                 alert('Cliente deletado!')

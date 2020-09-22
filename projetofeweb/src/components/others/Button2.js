@@ -1,5 +1,4 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import '../../css/Button2.css'
 
 const STYLES = ['btns--primary', 'btns--outline']

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import '../../bootstrap/css/bootstrap.css'
 import '../../bootstrap/css/bootstrap-grid.css'
 import '../../App.css'
@@ -76,14 +76,11 @@ export default function Cadastrar() {
                 cep: zoneCode
             }
         })
-    }
-
-    useEffect(() => {
         api.post('/cliente', cliente).then(response => {
             console.log(response.data)
         }).catch(erro => console.log(erro))
-    }, [cliente])
-
+    }
+    
     return (
 
         <>
@@ -142,7 +139,7 @@ export default function Cadastrar() {
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="estado">Estado</label>
-                                    <input type="text" required={true} required={true} className="estado form-control" id="estado" onChange={getState} />
+                                    <input type="text" required={true} className="estado form-control" id="estado" onChange={getState} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="cep">Cep</label>

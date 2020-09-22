@@ -9,7 +9,6 @@ import api from '../../services/api'
 export default function Atualizar() {
     const [clienteId, setClienteId] = useState({})
     const [buscaId, setBuscaId] = useState('')
-    const [id, setId] = useState('')
     const [cliente, setCliente] = useState()
     const [name, setName] = useState(clienteId.nome)
     const [user, setUser] = useState(clienteId.usuario)
@@ -24,9 +23,6 @@ export default function Atualizar() {
     const [state, setState] = useState(clienteId.endereco && clienteId.endereco.estado)
     const [zoneCode, setZoneCode] = useState(clienteId.endereco && clienteId.endereco.cep)
 
-    const setarId = (e) => {
-        setId(e.target.value)
-    }
     const setarName = (e) => {
         setName(e.target.value);
     }
@@ -69,28 +65,26 @@ export default function Atualizar() {
 
     const handleSubmit = () => {
         setCliente({
-             nome: name,
-             usuario: user,
-             cpf: cpf,
-             email: mail,
-             dataNascimento: birthday,
-             endereco: {
-                 rua: street,
-                 numero: number,
-                 complemento: complement,
-                 bairro: district,
-                 cidade: city,
-                 estado: state,
-                 cep: zoneCode
-             }
-         })
-     }
-
-     useEffect(() => {
+            nome: name,
+            usuario: user,
+            cpf: cpf,
+            email: mail,
+            dataNascimento: birthday,
+            endereco: {
+                rua: street,
+                numero: number,
+                complemento: complement,
+                bairro: district,
+                cidade: city,
+                estado: state,
+                cep: zoneCode
+            }
+        })
         api.put(`/cliente/${buscaId}`, cliente).then(response => {
-            console.log(response.data)
+            alert("Cliente atualizado!")
         }).catch(erro => console.log(erro))
-    }, [cliente])
+    }
+
 
     useEffect(() => {
         api.get(`/cliente/${buscaId}`).then(response => {
@@ -98,7 +92,7 @@ export default function Atualizar() {
         })
 
     }, [buscaId])
-    
+
     return (
 
         <>
@@ -120,39 +114,39 @@ export default function Atualizar() {
                         <form>
                             <h3>Dados Pessoais</h3>
                             <fieldset>
-                            <div className="form-group">
+                                <div className="form-group">
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="nome">Nome do cliente</label>
-                                    <input type="text"  className="nome form-control" id="nome" onChange={setarName} />
+                                    <input type="text" className="nome form-control" id="nome" onChange={setarName} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="usuario">Usuário</label>
-                                    <input type="text"  className="usuario form-control" id="usuario" onChange={setarUser} />
+                                    <input type="text" className="usuario form-control" id="usuario" onChange={setarUser} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="cpf">CPF</label>
-                                    <input type="text"  placeholder="000.000.000.00" className="cpf form-control" id="cpf" onChange={setarCpf}/>
+                                    <input type="text" placeholder="000.000.000.00" className="cpf form-control" id="cpf" onChange={setarCpf} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="email">E-mail</label>
                                     <div className="input-group-prepend">
                                         <span className="input-group-text">@</span>
-                                        <input type="email"  placeholder="email@example.com" className="emai form-control" id="email" onChange={setarMail}/>
+                                        <input type="email" placeholder="email@example.com" className="emai form-control" id="email" onChange={setarMail} />
                                     </div>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="dataNascimento">Data de nascimento</label>
-                                    <input type="text"  placeholder="AAAA-MM-DD" className="dataNascimento form-control" id="dataNascimento" onChange={setarBirthday}/>
+                                    <input type="text" placeholder="AAAA-MM-DD" className="dataNascimento form-control" id="dataNascimento" onChange={setarBirthday} />
                                 </div>
                                 <h3>Endereço</h3>
                                 <div className="form-group">
                                     <label htmlFor="rua">Rua</label>
-                                    <input type="text"  className="rua form-control" id="rua" onChange={setarStreet}/>
+                                    <input type="text" className="rua form-control" id="rua" onChange={setarStreet} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="numero">Número</label>
-                                    <input type="text"  className="numero form-control" id="numero" onChange={setarNumber}/>
+                                    <input type="text" className="numero form-control" id="numero" onChange={setarNumber} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="complemento">Complemento</label>
@@ -160,19 +154,19 @@ export default function Atualizar() {
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="bairro">Bairro</label>
-                                    <input type="text"  className="bairro form-control" id="bairro" onChange={setarDistrict}/>
+                                    <input type="text" className="bairro form-control" id="bairro" onChange={setarDistrict} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="cidade">Cidade</label>
-                                    <input type="text"  className="cidade form-control" id="cidade" onChange={setarCity}/>
+                                    <input type="text" className="cidade form-control" id="cidade" onChange={setarCity} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="estado">Estado</label>
-                                    <input type="text"  className="estado form-control" id="estado" onChange={setarState}/>
+                                    <input type="text" className="estado form-control" id="estado" onChange={setarState} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="cep">Cep</label>
-                                    <input type="text"  className="cep form-control" id="cep" onChange={setarZoneCode}/>
+                                    <input type="text" className="cep form-control" id="cep" onChange={setarZoneCode} />
                                 </div>
                             </fieldset>
                         </form>
