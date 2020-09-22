@@ -7,14 +7,16 @@ function Cliente({ id, nome, usuario, cpf, email, dataNascimento, rua, numero, c
         <>
             <div>
                 <div className="dados-clientes">
-                    <table className = "tabela table table-striped">
                         <div className="cliente-dados-pessoais">
                             <legend>Dados do cliente</legend>
+                    <table className = "tabela table table-striped">
+                            <thead>
                             <tr>
                                 <td>Id</td>
                                 <td>{id}</td>
                             </tr>
-
+                            </thead>
+                            <tbody>
                              <tr>
                                  <td>Nome</td>
                                 <td>{nome}</td>
@@ -35,12 +37,17 @@ function Cliente({ id, nome, usuario, cpf, email, dataNascimento, rua, numero, c
                                 <td>Data de nascimento</td>
                                 <td>{dataNascimento}</td>
                             </tr>
+                        </tbody>
+                        </table>
                         </div>
                         <div className="cliente-endereco">
-                            <br></br>
+                        <table className = "tabela table table-striped">
+                            <thead>
                             <tr>
                                 <td>Endereço:</td>
                             </tr>
+                            </thead>
+                            <tbody>
                             <tr>
                                 <td>Rua</td>
                                  <td>{rua}</td>
@@ -69,9 +76,10 @@ function Cliente({ id, nome, usuario, cpf, email, dataNascimento, rua, numero, c
                                 <td>CEP</td>
                                  <td>{cep}</td>
                             </tr>
+                        </tbody>
+                    </table>
                         </div>
                         
-                    </table>
                 </div>
             </div>
         </>

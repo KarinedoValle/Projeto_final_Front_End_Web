@@ -12,11 +12,22 @@ export default function Deletar() {
     useEffect(() => {
         api.get(`/cliente/${buscaId}`).then(response => {
             setClienteId(response.data)
-        })
+        }).catch(erro => console.log(erro))
 
     }, [buscaId])
+
     const handleChangeId = e => {
         setBuscaId(e.target.value)
+    }
+
+    const deleteCliente = () => {
+        if(buscaId === ''){
+            alert("Para deletar preencha o campo id abaixo!")
+        } else{
+            api.delete(`/cliente/${buscaId}`).then(response => {
+                alert('Cliente deletado!')
+            }).catch(erro => console.log(erro))
+        }
     }
     return (
 
@@ -37,7 +48,7 @@ export default function Deletar() {
                 <div className="col-md-12">
                     <div className="text-center text-md-center text-sm-center text-lg-center text-xl-center">
                         <h5>Tem certeza que deseja excluir esse cadastro?</h5>
-                        <Button2 className='btns' buttonStyle='btns--primary' buttonSize='btns--large'>Enviar</Button2>
+                        <Button2 className='btns' buttonStyle='btns--primary' buttonSize='btns--large' onClick={deleteCliente}>Enviar</Button2>
                     </div>
                 </div>
             </div>

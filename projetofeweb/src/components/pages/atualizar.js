@@ -9,15 +9,96 @@ import api from '../../services/api'
 export default function Atualizar() {
     const [clienteId, setClienteId] = useState({})
     const [buscaId, setBuscaId] = useState('')
+    const [id, setId] = useState('')
+    const [cliente, setCliente] = useState()
+    const [name, setName] = useState(clienteId.nome)
+    const [user, setUser] = useState(clienteId.usuario)
+    const [cpf, setCpf] = useState(clienteId.cpf)
+    const [mail, setMail] = useState(clienteId.email)
+    const [birthday, setBirthday] = useState(clienteId.dataNascimento)
+    const [street, setStreet] = useState(clienteId.endereco && clienteId.endereco.rua)
+    const [number, setNumber] = useState(clienteId.endereco && clienteId.endereco.numero)
+    const [complement, setComplement] = useState(clienteId.endereco && clienteId.endereco.complemento)
+    const [district, setDistrict] = useState(clienteId.endereco && clienteId.endereco.bairro)
+    const [city, setCity] = useState(clienteId.endereco && clienteId.endereco.cidade)
+    const [state, setState] = useState(clienteId.endereco && clienteId.endereco.estado)
+    const [zoneCode, setZoneCode] = useState(clienteId.endereco && clienteId.endereco.cep)
+
+    const setarId = (e) => {
+        setId(e.target.value)
+    }
+    const setarName = (e) => {
+        setName(e.target.value);
+    }
+    const setarUser = (e) => {
+        setUser(e.target.value);
+    }
+    const setarCpf = (e) => {
+        setCpf(e.target.value);
+    }
+    const setarMail = (e) => {
+        setMail(e.target.value);
+    }
+    const setarBirthday = (e) => {
+        setBirthday(e.target.value);
+    }
+    const setarStreet = (e) => {
+        setStreet(e.target.value);
+    }
+    const setarNumber = (e) => {
+        setNumber(e.target.value);
+    }
+    const setarComplement = (e) => {
+        setComplement(e.target.value);
+    }
+    const setarDistrict = (e) => {
+        setDistrict(e.target.value);
+    }
+    const setarCity = (e) => {
+        setCity(e.target.value);
+    }
+    const setarState = (e) => {
+        setState(e.target.value);
+    }
+    const setarZoneCode = (e) => {
+        setZoneCode(e.target.value);
+    }
+    const handleChangeId = e => {
+        setBuscaId(e.target.value)
+    }
+
+    const handleSubmit = () => {
+        setCliente({
+             nome: name,
+             usuario: user,
+             cpf: cpf,
+             email: mail,
+             dataNascimento: birthday,
+             endereco: {
+                 rua: street,
+                 numero: number,
+                 complemento: complement,
+                 bairro: district,
+                 cidade: city,
+                 estado: state,
+                 cep: zoneCode
+             }
+         })
+     }
+
+     useEffect(() => {
+        api.put(`/cliente/${buscaId}`, cliente).then(response => {
+            console.log(response.data)
+        }).catch(erro => console.log(erro))
+    }, [cliente])
+
     useEffect(() => {
         api.get(`/cliente/${buscaId}`).then(response => {
             setClienteId(response.data)
         })
 
     }, [buscaId])
-    const handleChangeId = e => {
-        setBuscaId(e.target.value)
-    }
+    
     return (
 
         <>
@@ -39,64 +120,66 @@ export default function Atualizar() {
                         <form>
                             <h3>Dados Pessoais</h3>
                             <fieldset>
-                                <div class="form-group">
-                                    <label for="nome">Nome do cliente</label>
-                                    <input type="text" required="true" className="nome form-control" id="nome" autofocus />
+                            <div className="form-group">
                                 </div>
-                                <div class="form-group">
-                                    <label for="usuario">Usuário</label>
-                                    <input type="text" required="true" className="usuario form-control" id="usuario" />
+                                <div className="form-group">
+                                    <label htmlFor="nome">Nome do cliente</label>
+                                    <input type="text"  className="nome form-control" id="nome" onChange={setarName} />
                                 </div>
-                                <div class="form-group">
-                                    <label for="cpf">CPF</label>
-                                    <input type="text" required="true" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="000.000.000.00" className="cpf form-control" id="cpf" />
+                                <div className="form-group">
+                                    <label htmlFor="usuario">Usuário</label>
+                                    <input type="text"  className="usuario form-control" id="usuario" onChange={setarUser} />
                                 </div>
-                                <div class="form-group">
-                                    <label for="email">E-mail</label>
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">@</span>
-                                        <input type="email" required="true" placeholder="email@example.com" className="emai form-control" id="email" />
+                                <div className="form-group">
+                                    <label htmlFor="cpf">CPF</label>
+                                    <input type="text"  placeholder="000.000.000.00" className="cpf form-control" id="cpf" onChange={setarCpf}/>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="email">E-mail</label>
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">@</span>
+                                        <input type="email"  placeholder="email@example.com" className="emai form-control" id="email" onChange={setarMail}/>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="dataNascimento">Data de nascimento</label>
-                                    <input type="text" required="true" placeholder="AAAA-MM-DD" className="dataNascimento form-control" id="dataNascimento" />
+                                <div className="form-group">
+                                    <label htmlFor="dataNascimento">Data de nascimento</label>
+                                    <input type="text"  placeholder="AAAA-MM-DD" className="dataNascimento form-control" id="dataNascimento" onChange={setarBirthday}/>
                                 </div>
                                 <h3>Endereço</h3>
-                                <div class="form-group">
-                                    <label for="rua">Rua</label>
-                                    <input type="text" required="true" className="rua form-control" id="rua" />
+                                <div className="form-group">
+                                    <label htmlFor="rua">Rua</label>
+                                    <input type="text"  className="rua form-control" id="rua" onChange={setarStreet}/>
                                 </div>
-                                <div class="form-group">
-                                    <label for="numero">Número</label>
-                                    <input type="text" required="true" className="numero form-control" id="numero" />
+                                <div className="form-group">
+                                    <label htmlFor="numero">Número</label>
+                                    <input type="text"  className="numero form-control" id="numero" onChange={setarNumber}/>
                                 </div>
-                                <div class="form-group">
-                                    <label for="complemento">Complemento</label>
-                                    <input type="text" className="complemento form-control" id="complemento" />
+                                <div className="form-group">
+                                    <label htmlFor="complemento">Complemento</label>
+                                    <input type="text" className="complemento form-control" id="complemento" onChange={setarComplement} />
                                 </div>
-                                <div class="form-group">
-                                    <label for="bairro">Bairro</label>
-                                    <input type="text" required="true" className="bairro form-control" id="bairro" />
+                                <div className="form-group">
+                                    <label htmlFor="bairro">Bairro</label>
+                                    <input type="text"  className="bairro form-control" id="bairro" onChange={setarDistrict}/>
                                 </div>
-                                <div class="form-group">
-                                    <label for="cidade">Cidade</label>
-                                    <input type="text" required="true" className="cidade form-control" id="cidade" />
+                                <div className="form-group">
+                                    <label htmlFor="cidade">Cidade</label>
+                                    <input type="text"  className="cidade form-control" id="cidade" onChange={setarCity}/>
                                 </div>
-                                <div class="form-group">
-                                    <label for="estado">Estado</label>
-                                    <input type="text" required="true" className="estado form-control" id="estado" />
+                                <div className="form-group">
+                                    <label htmlFor="estado">Estado</label>
+                                    <input type="text"  className="estado form-control" id="estado" onChange={setarState}/>
                                 </div>
-                                <div class="form-group">
-                                    <label for="cep">Cep</label>
-                                    <input type="text" required="true" className="cep form-control" id="cep" />
+                                <div className="form-group">
+                                    <label htmlFor="cep">Cep</label>
+                                    <input type="text"  className="cep form-control" id="cep" onChange={setarZoneCode}/>
                                 </div>
                             </fieldset>
                         </form>
                     </div>
                     <div className="col-md-12">
                         <div className="text-center text-md-center text-sm-center text-lg-center text-xl-center">
-                            <Button2 className='btns' buttonStyle='btns--primary' buttonSize='btns--large'>Enviar</Button2>
+                            <Button2 className='btns' buttonStyle='btns--primary' buttonSize='btns--large' onClick={handleSubmit}>Enviar</Button2>
                         </div>
                     </div>
                 </div>

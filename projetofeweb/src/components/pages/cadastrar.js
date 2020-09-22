@@ -6,7 +6,7 @@ import { Button2 } from '../others/Button2'
 import api from '../../services/api'
 
 export default function Cadastrar() {
-    const [cliente, setCliente] = useState({})
+    const [cliente, setCliente] = useState()
     const [name, setName] = useState('Maria Clara')
     const [user, setUser] = useState('')
     const [cpf, setCpf] = useState('')
