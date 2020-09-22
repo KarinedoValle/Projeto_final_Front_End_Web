@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'PT Sans', sans-serif;
+  }
+
+  .home{
+    display: flex;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+  }
+  
+  h3 {
+    text-align: center;
+  }
+
+  .busca-clientes{
+    text-align: left;
+    justify-content: center;
+    margin-right: 2rem;
+    margin-left: 15rem;
+    padding: 25px;
+    padding-left: 20px;
+  }
+
+    .dados-clientes{
+      padding-left: 0px;
+      padding-top: 30px;
+    }
+
+    th{
+      border: black;
+    }
+
+
+    @media screen and (max-width: 375px) {
+      .atualizar{
+        font-size: 90px;
+      }
+      .buscar{
+        font-size: 90px;
+      }
+
+      .deletar{
+        font-size: 90px;
+      }
+
+      .cadastrar{
+        font-size: 90px;
+      }
+  
+    }
+
+    @media screen and (max-width: 320px) {
+      .atualizar{
+        font-size: 80px;
+      }
+      .buscar{
+        font-size: 80px;
+      }
+
+      .deletar{
+        font-size: 80px;
+      }
+
+      .cadastrar{
+        font-size: 80px;
+      }
+  
+    }
+
+    @media screen and (max-width: 280px) {
+      .atualizar{
+        font-size: 70px;
+      }
+      .buscar{
+        font-size: 70px;
+      }
+
+      .deletar{
+        font-size: 70px;
+      }
+
+      .cadastrar{
+        font-size: 70px;
+      }
+      
+      .buscar-por-id{
+        margin-right: 10px;
+      }
+
+    }

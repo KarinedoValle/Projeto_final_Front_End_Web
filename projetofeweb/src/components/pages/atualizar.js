@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import '../../bootstrap/css/bootstrap.css'
-import '../../bootstrap/css/bootstrap-grid.css'
-import '../../App.css'
+import '../../css/bootstrap/css/bootstrap.css'
+import '../../css/bootstrap/css/bootstrap-grid.css'
+import '../../css/App.css'
 import { Button2 } from '../others/Button2'
-import Cliente from './cliente'
+import {Input} from '../styles/InputAtualizarStyles'
+import {Title} from '../styles/AtualizarStyles'
+import Cliente from '../others/cliente'
 import api from '../../services/api'
 
 export default function Atualizar() {
@@ -89,27 +91,26 @@ export default function Atualizar() {
     useEffect(() => {
         api.get(`/cliente/${buscaId}`).then(response => {
             setClienteId(response.data)
-        })
+        }).catch(erro => console.log(erro))
 
     }, [buscaId])
 
     return (
 
         <>
-            <h1 className="atualizar">Atualizar</h1>
+            <Title>Atualizar</Title>
             <div className="container col-md-12">
                 <div className="row">
                     <div className="col-md-1"></div>
-                    <div className="col-md-5">
-                        <div className="buscar-por-id">
-                            <form>
-                                <input type="text" placeholder="Buscar por id" className="caixa-busca txtBusca" onChange={handleChangeId} />
+                        <div className="buscar-por-id col-md-4">
+                            <form >
+                                <Input type="text" placeholder="Buscar por id" className="caixa-busca txtBusca" onChange={handleChangeId} />
                             </form>
                             <div className="dados-clientes">
                                 <Cliente id={clienteId.id} nome={clienteId.nome} usuario={clienteId.usuario} cpf={clienteId.cpf} email={clienteId.email} dataNascimento={clienteId.dataNascimento} rua={clienteId.endereco && clienteId.endereco.rua} numero={clienteId.endereco && clienteId.endereco.numero} complemento={clienteId.endereco && clienteId.endereco.complemento} bairro={clienteId.endereco && clienteId.endereco.bairro} cidade={clienteId.endereco && clienteId.endereco.cidade} estado={clienteId.endereco && clienteId.endereco.estado} cep={clienteId.endereco && clienteId.endereco.cep}></Cliente>
                             </div>
                         </div>
-                    </div>
+                    <div className="col-md-1"></div>
                     <div className="col-md-5">
                         <form>
                             <h3>Dados Pessoais</h3>

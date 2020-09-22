@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import '../../bootstrap/css/bootstrap.css'
-import '../../bootstrap/css/bootstrap-grid.css'
-import '../../App.css'
+import '../../css/bootstrap/css/bootstrap.css'
+import '../../css/bootstrap/css/bootstrap-grid.css'
+import '../../css/App.css'
 import { Button2 } from '../others/Button2'
-import Cliente from './cliente'
+import {Input} from '../styles/InputAtualizarStyles'
+import Cliente from '../others/cliente'
 import api from '../../services/api'
 
 export default function Deletar() {
@@ -34,16 +35,17 @@ export default function Deletar() {
         <>
             <h1 className="deletar">Deletar</h1>
             <div className="container col-md-12">
-                <div className="row col-md-6">
-                    <div className="col-md-4"></div>
-                    <div className="buscar-por-id">
+                <div className="row">
+                    <div className="col-md-1"></div>
+                    <div className="buscar-por-id col md 12">
                         <form>
-                            <input type="text" placeholder="Buscar por id" className="caixa-busca txtBusca" onChange={handleChangeId} />
+                            <Input type="text" placeholder="Buscar por id" className="caixa-busca txtBusca" onChange={handleChangeId} />
                         </form>
                         <div className="dados-clientes">
                             <Cliente id={clienteId.id} nome={clienteId.nome} usuario={clienteId.usuario} cpf={clienteId.cpf} email={clienteId.email} dataNascimento={clienteId.dataNascimento} rua={clienteId.endereco && clienteId.endereco.rua} numero={clienteId.endereco && clienteId.endereco.numero} complemento={clienteId.endereco && clienteId.endereco.complemento} bairro={clienteId.endereco && clienteId.endereco.bairro} cidade={clienteId.endereco && clienteId.endereco.cidade} estado={clienteId.endereco && clienteId.endereco.estado} cep={clienteId.endereco && clienteId.endereco.cep}></Cliente>
                         </div>
                     </div>
+                    <div className="col-md-1"></div>
                 </div>
                 <div className="col-md-12">
                     <div className="text-center text-md-center text-sm-center text-lg-center text-xl-center">

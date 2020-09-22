@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../App.css'
+import '../../css/App.css'
 import HeroSection from '../others/HeroSection'
 
 function Home(){

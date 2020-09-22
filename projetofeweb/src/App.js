@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './css/App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import NavBar from './components/others/NavBar'
 import Footer from './components/others/Footer'
@@ -8,8 +8,7 @@ import Atualizar from './components/pages/atualizar'
 import Cadastrar from './components/pages/cadastrar'
 import Deletar from './components/pages/deletar'
 import Buscar from './components/pages/buscar'
-import Login from './components/pages/login'
-import Cliente from './components/pages/cliente'
+import Cliente from './components/others/cliente'
 
 function App() {
   return (
@@ -22,7 +21,6 @@ function App() {
           <Route path = '/buscar' component = {Buscar}/>
           <Route path = '/atualizar' component = {Atualizar}/>
           <Route path = '/deletar' component = {Deletar}/>
-          <Route path = '/login' component = {Login}/>
           <Route path = '/cliente/:busca' component = {Cliente}/>
        </Switch>
        <Footer />

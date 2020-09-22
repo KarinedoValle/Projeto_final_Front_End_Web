@@ -1,13 +1,14 @@
 import React, { useState} from 'react'
-import '../../bootstrap/css/bootstrap.css'
-import '../../bootstrap/css/bootstrap-grid.css'
-import '../../App.css'
+import '../../css/bootstrap/css/bootstrap.css'
+import '../../css/bootstrap/css/bootstrap-grid.css'
+import '../../css/App.css'
 import { Button2 } from '../others/Button2'
+import {Title} from '../styles/CadastrarStyles'
 import api from '../../services/api'
 
 export default function Cadastrar() {
     const [cliente, setCliente] = useState()
-    const [name, setName] = useState('Maria Clara')
+    const [name, setName] = useState('')
     const [user, setUser] = useState('')
     const [cpf, setCpf] = useState('')
     const [mail, setMail] = useState('')
@@ -77,14 +78,14 @@ export default function Cadastrar() {
             }
         })
         api.post('/cliente', cliente).then(response => {
-            console.log(response.data)
+            alert("Cliente cadastrado!")
         }).catch(erro => console.log(erro))
     }
     
     return (
 
         <>
-            <h1 className="cadastrar">Cadastrar</h1>
+            <Title>Cadastrar</Title>
             <div className="container">
                 <div className="row">
                     <div className="col-md-2"></div>

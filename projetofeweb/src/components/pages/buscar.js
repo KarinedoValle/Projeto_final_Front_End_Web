@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import '../../App.css'
-import Cliente from './cliente'
+import React, { useState, useEffect } from 'react'
+import '../../css/bootstrap/css/bootstrap.css'
+import '../../css/bootstrap/css/bootstrap-grid.css'
+import '../../css/App.css'
+import {Input} from '../styles/InputBuscaStyles'
+import {Title} from '../styles/BuscarStyles'
+import Cliente from '../others/cliente'
 import api from '../../services/api'
 
 function Buscar() {
@@ -36,19 +40,15 @@ function Buscar() {
   )
 
 
-
   return (
     <div className="App">
-    <h1 className="buscar">Buscar</h1>
+    <Title>Buscar</Title>
     <div className="container col-md-12">
-      <div className="busca-clientes row col-md-12">
-        <div className="col-md-1"></div>
+        {/* <div className="col-md-1"></div> */}
+      <div className="busca-clientes row">
         <div className="input-busca col-md-5">
-       
-          <div className="buscar-por-nome">
             <form>
-              <input type="text" placeholder="Buscar por nome" className="caixa-busca txtBusca" onChange={handleChange} />
-              {/* <img src="images/search-icon-png-19.jpg" id="btnBusca" alt="Buscar"/> */}
+              <Input type="text" placeholder="Buscar por nome" onChange={handleChange} />
             </form>
             <div className="dados-clientes">
               {clienteBusca.map(cliente => {
@@ -60,14 +60,14 @@ function Buscar() {
                 )
               })}
           
-          </div>
+          
           </div>
         </div>
         
         <div className="col-md-1"></div>
         <div className="buscar-por-id col-md-5">
           <form>
-            <input type="text" placeholder="Buscar por id" className="caixa-busca txtBusca" onChange={handleChangeId} />
+            <Input type="text" placeholder="Buscar por id" className="caixa-busca txtBusca" onChange={handleChangeId} />
           </form>
           <div className="dados-clientes">
             <Cliente id={clienteId.id} nome={clienteId.nome} usuario={clienteId.usuario} cpf={clienteId.cpf} email={clienteId.email} dataNascimento={clienteId.dataNascimento} rua={clienteId.endereco && clienteId.endereco.rua} numero={clienteId.endereco && clienteId.endereco.numero} complemento={clienteId.endereco && clienteId.endereco.complemento} bairro={clienteId.endereco && clienteId.endereco.bairro} cidade={clienteId.endereco && clienteId.endereco.cidade} estado={clienteId.endereco && clienteId.endereco.estado} cep={clienteId.endereco && clienteId.endereco.cep}></Cliente>

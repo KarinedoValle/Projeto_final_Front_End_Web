@@ -1,6 +1,5 @@
 .navbar {
     background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
-    /* background-color: #1c191b; */
     height: 106px;
     display: flex;
     justify-content: center;
@@ -118,7 +117,6 @@
       position: absolute;
       top: 0;
       left: 0;
-      /* transform: translate(25%, 50%); */
     }
   
     .menu-icon {
@@ -157,3 +155,5 @@
       transition: 250ms;
     }
   }
+
+  
