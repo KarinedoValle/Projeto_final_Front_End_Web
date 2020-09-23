@@ -11,4 +11,5 @@ export const Title = styled.h1 `{
     height: 90vh;
     align-items: center;
     justify-content: center;
+    margin-bottom: 30px;
   }`

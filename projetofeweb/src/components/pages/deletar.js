@@ -4,6 +4,7 @@ import '../../css/bootstrap/css/bootstrap-grid.css'
 import '../../css/App.css'
 import { Button2 } from '../others/Button2'
 import {Input} from '../styles/InputAtualizarStyles'
+import {Title} from '../styles/DeletarStyles'
 import Cliente from '../others/cliente'
 import api from '../../services/api'
 
@@ -33,7 +34,7 @@ export default function Deletar() {
     return (
 
         <>
-            <h1 className="deletar">Deletar</h1>
+            <Title>Deletar</Title>
             <div className="container col-md-12">
                 <div className="row">
                     <div className="col-md-1"></div>
@@ -50,7 +51,7 @@ export default function Deletar() {
                 <div className="col-md-12">
                     <div className="text-center text-md-center text-sm-center text-lg-center text-xl-center">
                         <h5>Tem certeza que deseja excluir esse cadastro?</h5>
-                        <Button2 className='btns' buttonStyle='btns--primary' buttonSize='btns--large' onClick={deleteCliente}>Enviar</Button2>
+                        <Button2 className='btns' buttonStyle='btns--primary' buttonSize='btns--large' onClick={deleteCliente}>Confirmar</Button2>
                     </div>
                 </div>
             </div>
