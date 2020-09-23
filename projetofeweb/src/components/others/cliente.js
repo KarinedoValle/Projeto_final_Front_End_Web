@@ -15,7 +15,7 @@ function Buscar(buscaId) {
     api.get(`/cliente/${buscaId}`).then(response => { 
         setClienteId(response.data) 
     }).catch(erro => { 
-    alert("Cliente não encontrado!")                
+    // alert("Cliente não encontrado!")                
     setClienteId('') 
     })
 }

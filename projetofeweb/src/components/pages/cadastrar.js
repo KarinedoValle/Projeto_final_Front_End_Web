@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react'
+import { format, parseISO } from 'date-fns'
 import '../../css/bootstrap/css/bootstrap.css'
 import '../../css/bootstrap/css/bootstrap-grid.css'
 import '../../css/App.css'
@@ -12,7 +13,7 @@ export default function Cadastrar() {
     const [user, setUser] = useState('')
     const [cpf, setCpf] = useState('')
     const [mail, setMail] = useState('')
-    const [birthday, setBirthday] = useState('')
+    var [birthday, setBirthday] = useState('')
     const [street, setStreet] = useState('')
     const [number, setNumber] = useState('')
     const [complement, setComplement] = useState('')
@@ -59,8 +60,13 @@ export default function Cadastrar() {
         setZoneCode(e.target.value);
     }
 
-    const handleSubmit = () => {
+    
 
+    const handleSubmit = () => {
+    //Formatando a data
+       birthday = birthday.substr(0,10).split('/').reverse().join('-')
+       birthday = parseISO(birthday)
+       birthday = format(birthday, "yyyy-MM-dd'T00:00:00Z'")
        setCliente({
             nome: name,
             usuario: user,
@@ -122,7 +128,7 @@ export default function Cadastrar() {
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="dataNascimento">Data de nascimento</label>
-                                    <input type="text" required={true} placeholder="AAAA-MM-DDT:00:00:00Z" className="dataNascimento form-control" id="dataNascimento" onChange={getBirthday} />
+                                    <input type="text" required={true} placeholder="dd/mm/aaaa" className="dataNascimento form-control" id="dataNascimento" onChange={getBirthday} />
                                 </div>
                                 <h3>Endereço</h3>
                                 <div className="form-group">
