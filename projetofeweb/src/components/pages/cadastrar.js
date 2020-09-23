@@ -22,46 +22,6 @@ export default function Cadastrar() {
     const [state, setState] = useState('')
     const [zoneCode, setZoneCode] = useState('')
 
-
-    const getName = (e) => {
-        setName(e.target.value);
-    }
-    const getUser = (e) => {
-        setUser(e.target.value);
-    }
-    const getCpf = (e) => {
-        setCpf(e.target.value);
-    }
-    const getMail = (e) => {
-        setMail(e.target.value);
-    }
-    const getBirthday = (e) => {
-        setBirthday(e.target.value);
-    }
-    const getStreet = (e) => {
-        setStreet(e.target.value);
-    }
-    const getNumber = (e) => {
-        setNumber(e.target.value);
-    }
-    const getComplement = (e) => {
-        setComplement(e.target.value);
-    }
-    const getDistrict = (e) => {
-        setDistrict(e.target.value);
-    }
-    const getCity = (e) => {
-        setCity(e.target.value);
-    }
-    const getState = (e) => {
-        setState(e.target.value);
-    }
-    const getZoneCode = (e) => {
-        setZoneCode(e.target.value);
-    }
-
-    
-
     const handleSubmit = () => {
     //Formatando a data
        birthday = birthday.substr(0,10).split('/').reverse().join('-')
@@ -108,56 +68,56 @@ export default function Cadastrar() {
                             <fieldset>
                                 <div className="form-group">
                                     <label htmlFor="nome">Nome do cliente</label>
-                                    <input type="text" required={true} className="nome form-control" id="nome" autoFocus onChange={getName} />
+                                    <input type="text" required={true} className="nome form-control" id="nome" autoFocus onChange={e => setName(e.target.value)} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="usuario">Usuário</label>
-                                    <input type="text" required={true} className="usuario form-control" id="usuario" onChange={getUser} />
+                                    <input type="text" required={true} className="usuario form-control" id="usuario" onChange={e => setUser(e.target.value)} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="cpf">CPF</label>
-                                    <h6>(Somente números)</h6>
-                                    <input type="text" required={true} className="cpf form-control" id="cpf" onChange={getCpf} />
+                                    <p>(Somente números)</p>
+                                    <input type="text" required={true} className="cpf form-control" id="cpf" onChange={e => setCpf(e.target.value)} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="email">E-mail</label>
                                     <div className="input-group-prepend">
                                         <span className="input-group-text">@</span>
-                                        <input type="email" required={true}  placeholder="email@example.com" className="emai form-control" id="email" onChange={getMail} />
+                                        <input type="email" required={true}  placeholder="email@example.com" className="emai form-control" id="email" onChange={e => setMail(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="dataNascimento">Data de nascimento</label>
-                                    <input type="text" required={true} placeholder="dd/mm/aaaa" className="dataNascimento form-control" id="dataNascimento" onChange={getBirthday} />
+                                    <input type="text" required={true} placeholder="dd/mm/aaaa" className="dataNascimento form-control" id="dataNascimento" onChange={e => setBirthday(e.target.value)} />
                                 </div>
                                 <h3>Endereço</h3>
                                 <div className="form-group">
                                     <label htmlFor="rua">Rua</label>
-                                    <input type="text" required={true} className="rua form-control" id="rua" onChange={getStreet} />
+                                    <input type="text" required={true} className="rua form-control" id="rua" onChange={e => setStreet(e.target.value)} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="numero">Número</label>
-                                    <input type="text" required={true} className="numero form-control" id="numero" onChange={getNumber} />
+                                    <input type="text" required={true} className="numero form-control" id="numero" onChange={e => setNumber(e.target.value)} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="complemento">Complemento</label>
-                                    <input type="text" className="complemento form-control" id="complemento" onChange={getComplement} />
+                                    <input type="text" className="complemento form-control" id="complemento" onChange={e => setComplement(e.target.value)} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="bairro">Bairro</label>
-                                    <input type="text" required={true} className="bairro form-control" id="bairro" onChange={getDistrict} />
+                                    <input type="text" required={true} className="bairro form-control" id="bairro" onChange={e => setDistrict(e.target.value)} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="cidade">Cidade</label>
-                                    <input type="text" required={true}  className="cidade form-control" id="cidade" onChange={getCity} />
+                                    <input type="text" required={true}  className="cidade form-control" id="cidade" onChange={e => setCity(e.target.value)} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="estado">Estado</label>
-                                    <input type="text" required={true} className="estado form-control" id="estado" onChange={getState} />
+                                    <input type="text" required={true} className="estado form-control" id="estado" onChange={e => setState(e.target.value)} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="cep">Cep</label>
-                                    <input type="text" required={true} className="cep form-control" id="cep" onChange={getZoneCode} />
+                                    <input type="text" required={true} className="cep form-control" id="cep" onChange={e => setZoneCode(e.target.value)} />
                                 </div>
                             </fieldset>
                         </form>

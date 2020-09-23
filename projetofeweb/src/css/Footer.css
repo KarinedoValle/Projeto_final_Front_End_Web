@@ -8,7 +8,7 @@
     margin-top: 40px;
   }
   
-  .footer-subscription {
+  .footer-inscricao {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,19 +20,14 @@
     color: #fff;
   }
   
-  .footer-subscription > p {
+  .footer-inscricao > p {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
       'Lucida Sans', Arial, sans-serif;
   }
   
-  .footer-subscription-heading {
+  .footer-titulo {
     margin-bottom: 24px;
     font-size: 24px;
-  }
-  
-  .footer-subscription-text {
-    margin-bottom: 24px;
-    font-size: 20px;
   }
   
   .footer-input {
@@ -53,7 +48,7 @@
     justify-content: center;
   }
   
-  .footer-link-wrapper {
+  .footer-link {
     display: flex;
   }
   
@@ -69,9 +64,6 @@
   
   .footer-link-items h2 {
     margin-bottom: 16px;
-  }
-  
-  .footer-link-items > h2 {
     color: #fff;
   }
   
@@ -81,31 +73,22 @@
     margin-bottom: 0.5rem;
   }
   
-  .footer-link-items a:hover {
-    color: #e9e9e9;
-    transition: 0.3s ease-out;
-  }
-  
-  .footer-email-form h2 {
-    margin-bottom: 2rem;
-  }
-  
   .footer-input::placeholder {
     color: #b1b1b1;
   }
   
-  /* Social Icons */
-  .social-icon-link {
+  /* Icones de Midia Social */
+  .iconesMS-link {
     color: #fff;
     font-size: 24px;
   }
   
-  .social-media {
+  .midiaSocial {
     max-width: 1000px;
     width: 100%;
   }
   
-  .social-media-wrap {
+  .midiaSocial-geral {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -114,26 +97,14 @@
     margin: 40px auto 0 auto;
   }
   
-  .social-icons {
+  .iconesMS {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 240px;
   }
   
-  .social-logo {
-    color: #fff;
-    justify-self: start;
-    margin-left: 20px;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-  
-  .website-rights {
+  .copyright {
     color: #fff;
     margin-bottom: 16px;
   }
@@ -151,11 +122,11 @@
       width: 100%;
     }
   
-    .footer-link-wrapper {
+    .footer-link {
       flex-direction: column;
     }
   
-    .social-media-wrap {
+    .midiaSocial-geral {
       flex-direction: column;
     }
   }
@@ -166,8 +137,6 @@
     .footer-links {
       padding-top: 2rem;
     }
-    
-   
 
     .footer-input {
       width: 100%;
@@ -177,11 +146,11 @@
       width: 100%;
     }
   
-    .footer-link-wrapper {
+    .footer-link {
       flex-direction: column;
     }
   
-    .social-media-wrap {
+    .midiaSocial-geral {
       flex-direction: column;
     }
   

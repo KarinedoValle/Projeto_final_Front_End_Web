@@ -2,7 +2,7 @@
   "name": "projetofeweb",
   "version": "0.1.0",
   "private": true,
-  "engines":{
+  "engines": {
     "node": "12.18.3",
     "npm": "6.14.6"
   },
