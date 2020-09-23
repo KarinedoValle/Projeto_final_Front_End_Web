@@ -10,8 +10,7 @@ import Cliente from '../others/cliente'
 import api from '../../services/api'
 
 export default function Atualizar() {
-    // const [clienteId, setClienteId] = useState({})
-    // const [enderecoCliente, setEnderecoCliente] = useState({})
+    const [clienteId, setClienteId] = useState({})
     const [buscaId, setBuscaId] = useState('')
     const [cliente, setCliente] = useState({})
     const [name, setName] = useState('')
@@ -60,6 +59,15 @@ export default function Atualizar() {
     }
 
     useEffect(() => {
+        api.get(`/cliente/${buscaId}`).then(response => { 
+            setarCliente(response.data)
+            setClienteId(response.data) 
+        }).catch(erro => {               
+            setClienteId('') 
+         })
+    }, [buscaId])
+
+    useEffect(() => {
         if (cliente !== {} && buscaId !== '') {
             api.put(`/cliente/${buscaId}`, cliente).then(response => {
                 alert("Cliente atualizado!")
@@ -69,21 +77,19 @@ export default function Atualizar() {
         }
     }, [cliente])
 
-    const setarCliente = (cliente, endereco) => {
+    const setarCliente = (cliente) => {
         setName(cliente.nome)
         setUser(cliente.usuario)
         setCpf(cliente.cpf)
         setMail(cliente.email)
         setBirthday(cliente.dataNascimento)
-        setStreet(endereco.rua)
-        setNumber(endereco.numero)
-        setComplement(endereco.complemento)
-        setDistrict(endereco.bairro)
-        setCity(endereco.cidade)
-        setState(endereco.estado)
-        setZoneCode(endereco.cep)
-        console.log(cliente)
-        console.log(endereco)
+        setStreet(cliente.endereco && cliente.endereco.rua)
+        setNumber(cliente.endereco && cliente.endereco.numero)
+        setComplement(cliente.endereco && cliente.endereco.complemento)
+        setDistrict(cliente.endereco && cliente.endereco.bairro)
+        setCity(cliente.endereco && cliente.endereco.cidade)
+        setState(cliente.endereco && cliente.endereco.estado)
+        setZoneCode(cliente.endereco && cliente.endereco.cep)
     }
     return (
 
@@ -97,7 +103,7 @@ export default function Atualizar() {
                             <Input type="text" placeholder="Buscar por id" className="caixa-busca txtBusca" onChange={handleChangeId} />
                         </form>
                         <div className="dados-clientes">
-                            <Cliente id={buscaId}></Cliente>
+                            <Cliente cliente={clienteId}></Cliente>
                         </div>
                     </div>
                     <div className="col-md-1"></div>

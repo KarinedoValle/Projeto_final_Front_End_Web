@@ -14,7 +14,9 @@ export default function Deletar() {
     useEffect(() => {
         api.get(`/cliente/${buscaId}`).then(response => {
             setClienteId(response.data)
-        }).catch(erro => console.log(erro))
+        }).catch(erro => {               
+            setClienteId('') 
+         })
 
     }, [buscaId])
 
@@ -43,7 +45,7 @@ export default function Deletar() {
                             <Input type="text" placeholder="Buscar por id" className="caixa-busca txtBusca" onChange={handleChangeId} />
                         </form>
                         <div className="dados-clientes">
-                        <Cliente id={buscaId}></Cliente>
+                        <Cliente cliente={clienteId}></Cliente>
                         </div>
                     </div>
                     <div className="col-md-1"></div>

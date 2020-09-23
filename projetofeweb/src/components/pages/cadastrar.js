@@ -25,8 +25,9 @@ export default function Cadastrar() {
     const handleSubmit = () => {
     //Formatando a data
        birthday = birthday.substr(0,10).split('/').reverse().join('-')
-       birthday = parseISO(birthday)
-       birthday = format(birthday, "yyyy-MM-dd'T00:00:00Z'")
+        //inserir como string
+        birthday = birthday.concat("T00:00:00Z")
+
        setCliente({
             nome: name,
             usuario: user,
@@ -50,7 +51,10 @@ export default function Cadastrar() {
         if(cliente !== ''){
             api.post('/cliente', cliente).then(response => {
                 alert("Cliente cadastrado!")
-            }).catch(erro => console.log(erro))
+            }).catch(erro => {
+                console.log(erro)
+                alert("Erro ao cadastrar cliente!")
+                })
 
         }
     }, [cliente])
@@ -77,7 +81,7 @@ export default function Cadastrar() {
                                 <div className="form-group">
                                     <label htmlFor="cpf">CPF</label>
                                     <p>(Somente números)</p>
-                                    <input type="text" required={true} className="cpf form-control" id="cpf" onChange={e => setCpf(e.target.value)} />
+                                    <input type="text" pattern="[0-9]+$" required={true} className="cpf form-control" id="cpf" onChange={e => setCpf(e.target.value)} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="email">E-mail</label>
@@ -88,12 +92,12 @@ export default function Cadastrar() {
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="dataNascimento">Data de nascimento</label>
-                                    <input type="text" required={true} placeholder="dd/mm/aaaa" className="dataNascimento form-control" id="dataNascimento" onChange={e => setBirthday(e.target.value)} />
+                                    <input type="text" required={true} placeholder="dd/mm/aaaa" maxLength="10" pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" className="dataNascimento form-control" id="dataNascimento" onChange={e => setBirthday(e.target.value)} />
                                 </div>
                                 <h3>Endereço</h3>
                                 <div className="form-group">
                                     <label htmlFor="rua">Rua</label>
-                                    <input type="text" required={true} className="rua form-control" id="rua" onChange={e => setStreet(e.target.value)} />
+                                    <input type="text" placeholder="Mínimo de 3 caracteres" minLength='3' required={true} className="rua form-control" id="rua" onChange={e => setStreet(e.target.value)} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="numero">Número</label>
@@ -113,11 +117,12 @@ export default function Cadastrar() {
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="estado">Estado</label>
-                                    <input type="text" required={true} className="estado form-control" id="estado" onChange={e => setState(e.target.value)} />
+                                    <input type="text" placeholder="Sigla" pattern="[a-z\s]+$" minLength='2' maxLength='2' required={true} className="estado form-control" id="estado" onChange={e => setState(e.target.value)} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="cep">Cep</label>
-                                    <input type="text" required={true} className="cep form-control" id="cep" onChange={e => setZoneCode(e.target.value)} />
+                                    <p>(Somente números)</p>
+                                    <input type="text" pattern="[0-9]+$" required={true} className="cep form-control" id="cep" onChange={e => setZoneCode(e.target.value)} />
                                 </div>
                             </fieldset>
                         </form>

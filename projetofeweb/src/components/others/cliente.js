@@ -1,24 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import '../../css/App.css'
-import api from '../../services/api'
 
-function Cliente(porId) {
+function Cliente(props) {
   const [clienteId, setClienteId] = useState({})
-  const [buscaId, setBuscaId] = useState('')
+  
 
   useEffect(() => {
-      setBuscaId(porId.id)
-      Buscar(porId.id) 
-  }, [porId])
-
-function Buscar(buscaId) {
-    api.get(`/cliente/${buscaId}`).then(response => { 
-        setClienteId(response.data) 
-    }).catch(erro => { 
-    // alert("Cliente não encontrado!")                
-    setClienteId('') 
-    })
-}
+      setClienteId(props.cliente) 
+  }, [props.cliente])
 
     return (
         <>

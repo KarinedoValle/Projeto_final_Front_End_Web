@@ -9,8 +9,18 @@ import api from '../../services/api'
 
 function Buscar() {
   const [cliente, setCliente] = useState([])
+  const [clienteId, setClienteId] = useState({})
   const [buscaId, setBuscaId] = useState('')
   const [busca, setBusca] = useState('')
+
+  useEffect(() => {
+    api.get(`/cliente/${buscaId}`).then(response => {
+        setClienteId(response.data)
+    }).catch(erro => {               
+      setClienteId('') 
+   })
+
+}, [buscaId])
 
   useEffect(() => {
     api.get('/cliente').then(response => {
@@ -37,7 +47,6 @@ function Buscar() {
     <div className="App">
     <Title>Buscar</Title>
     <div className="container col-md-12">
-        {/* <div className="col-md-1"></div> */}
       <div className="busca-clientes row">
         <div className="input-busca col-md-5">
             <form>
@@ -96,27 +105,27 @@ function Buscar() {
                                 </tr>
                                 <tr>
                                     <td>Número</td>
-                                    <td>{cliente.endereco && cliente.endereco.rua}</td>
+                                    <td>{cliente.endereco && cliente.endereco.numero}</td>
                                 </tr>
                                 <tr>
                                     <td>Complemento</td>
-                                    <td>{cliente.endereco && cliente.endereco.rua}</td>
+                                    <td>{cliente.endereco && cliente.endereco.complemento}</td>
                                 </tr>
                                 <tr>
                                     <td>Bairro</td>
-                                    <td>{cliente.endereco && cliente.endereco.rua}</td>
+                                    <td>{cliente.endereco && cliente.endereco.bairro}</td>
                                 </tr>
                                 <tr>
                                     <td>Cidade</td>
-                                    <td>{cliente.endereco && cliente.endereco.rua}</td>
+                                    <td>{cliente.endereco && cliente.endereco.cidade}</td>
                                 </tr>
                                 <tr>
                                     <td>Estado</td>
-                                    <td>{cliente.endereco && cliente.endereco.rua}</td>
+                                    <td>{cliente.endereco && cliente.endereco.estado}</td>
                                 </tr>
                                 <tr>
                                     <td>CEP</td>
-                                    <td>{cliente.endereco && cliente.endereco.rua}</td>
+                                    <td>{cliente.endereco && cliente.endereco.cep}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -138,7 +147,7 @@ function Buscar() {
             <Input type="text" placeholder="Buscar por id" className="caixa-busca txtBusca" onChange={handleChangeId} />
           </form>
           <div className="dados-clientes">
-            <Cliente id={buscaId}></Cliente>
+            <Cliente cliente={clienteId}></Cliente>
           </div>
         </div>
         </div>
