@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-//import { format, parseISO } from 'date-fns';
 import '../../css/bootstrap/css/bootstrap.css'
 import '../../css/bootstrap/css/bootstrap-grid.css'
 import '../../css/App.css'
@@ -31,14 +30,48 @@ export default function Atualizar() {
     }
 
     const handleSubmit = () => {
+        if(name == undefined || name == ""){
+            setName(clienteId.nome)
+        }
+        if(user == undefined || user == ""){
+            setUser(clienteId.usuario)
+        }
+        if(cpf == undefined || cpf == ""){
+            setCpf(clienteId.cpf)
+        }
+        if(mail == undefined || mail == ""){
+            setMail(clienteId.email)
+        }
+        if(birthday == undefined || birthday == ""){
+            setBirthday(clienteId.dataNascimento)
+        } else {
         //Formatando a data
-        //*birthday = birthday.substr(0,10).split('/').reverse().join('-')
+        birthday = birthday.substr(0,10).split('/').reverse().join('-')
         //inserir como string
-        //* birthday = birthday.concat("T00:00:00Z")
-        console.log(birthday)
-        //inserir como date
-        //    birthday = parseISO(birthday)
-        //    birthday = format(birthday, "yyyy-MM-dd'T00:00:00Z'")
+        birthday = birthday.concat("T00:00:00Z")
+        }
+        if(street == undefined || street == ""){
+            setStreet(clienteId.endereco && clienteId.endereco.rua)
+        }
+        if(number == undefined || number == ""){
+            setNumber(clienteId.endereco && clienteId.endereco.numero)
+        }
+        if(complement == undefined || complement == ""){
+            setComplement(clienteId.endereco && clienteId.endereco.complemento)
+        }
+        if(district == undefined || district == ""){
+            setDistrict(clienteId.endereco && clienteId.endereco.bairro)
+        }
+        if(state == undefined || state == ""){
+            setState(clienteId.endereco && clienteId.endereco.estado)
+        }
+        if(city == undefined || city == ""){
+            setCity(clienteId.endereco && clienteId.endereco.cidade)
+        }
+        if(zoneCode == undefined || zoneCode == ""){
+            setZoneCode(clienteId.endereco && clienteId.endereco.cep)
+        } 
+
         setCliente({
             nome: name,
             usuario: user,
@@ -55,12 +88,13 @@ export default function Atualizar() {
                 cep: zoneCode
             }
         })
-
+        
     }
+    
 
     useEffect(() => {
         api.get(`/cliente/${buscaId}`).then(response => { 
-            setarCliente(response.data)
+            setarClienteSalvo(response.data)
             setClienteId(response.data) 
         }).catch(erro => {               
             setClienteId('') 
@@ -68,16 +102,19 @@ export default function Atualizar() {
     }, [buscaId])
 
     useEffect(() => {
+        console.log('Isso', typeof(name), "nome", name, "cliente" , cliente)
         if (cliente !== {} && buscaId !== '') {
             api.put(`/cliente/${buscaId}`, cliente).then(response => {
                 alert("Cliente atualizado!")
+                setClienteId('')
             }).catch(erro => {
                 console.log(erro)
+                
             })
         }
     }, [cliente])
 
-    const setarCliente = (cliente) => {
+    const setarClienteSalvo = (cliente) => {
         setName(cliente.nome)
         setUser(cliente.usuario)
         setCpf(cliente.cpf)
